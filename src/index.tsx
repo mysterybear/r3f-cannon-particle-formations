@@ -9,7 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <div className="full-screen">
       <Canvas
-        camera={{ position: [0, 5, 10] }}
+        camera={{ position: [0, 25, 50] }}
         onCreated={({ gl }) => void gl.setClearColor("black")}
       >
         <App />

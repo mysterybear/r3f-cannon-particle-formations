@@ -47,7 +47,7 @@ const Particles = ({ formations }: Props) => {
   const cycleIndex = () =>
     void setIndex((p) => (p < formations.length - 1 ? p + 1 : 0))
 
-  useInterval(cycleIndex, 5000)
+  useInterval(cycleIndex, 500)
 
   useEffect(() => {
     let unsubscribers: any[] = []
@@ -56,7 +56,8 @@ const Particles = ({ formations }: Props) => {
     )) {
       unsubscribers.push(
         api.at(i).position.subscribe(([x0, y0, z0]) => {
-          api.at(i).velocity.set(x1 - x0, y1 - y0, z1 - z0)
+          // api.at(i).velocity.set(x1 - x0, y1 - y0, z1 - z0)
+          api.at(i).applyImpulse([x1 - x0, y1 - y0, z1 - z0], [x0, y0, z0])
         })
       )
     }
